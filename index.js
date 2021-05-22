@@ -1,4 +1,4 @@
-var gender = "Male";
+var gender = "Random";
 var start = "false";
 
 $('#create').click(function() {
@@ -12,10 +12,21 @@ function outputEverything(){
 }
 
 function generateName (){
-    if(gender === "Male")
+    if(gender === "Male"){
         return randomEl(namesMale)+' '+randomEl(surnames);
-    else
+    }else if(gender === "Female"){
         return randomEl(namesFemale)+' '+randomEl(surnames);
+    }else if(gender === "Random"){
+        return generateRandomlyName();
+    }
+}
+
+function generateRandomlyName(){
+    var num = Math.random();
+    if (num < 0.5)
+        return randomEl(namesFemale)+' '+randomEl(surnames);
+    else
+        return randomEl(namesMale)+' '+randomEl(surnames);
 }
 
 function randomEl(list) {
