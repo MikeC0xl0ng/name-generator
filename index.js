@@ -1,12 +1,18 @@
 var gender = "Male";
+var start = "false";
 
-$('#create').click(function() {    
-    $('#output').text(generateName);
-    selectElementContents($('#output')[0]);
+$('#create').click(function() {
+    outputEverything();
 });
 
-function generateName (gender){
-    if(gender == "Male")
+function outputEverything(){
+    $('#output').text(generateName());
+    selectElementContents($('#output')[0]);
+    setTimeout(outputEverything, 5000);
+}
+
+function generateName (){
+    if(gender === "Male")
         return randomEl(namesMale)+' '+randomEl(surnames);
     else
         return randomEl(namesFemale)+' '+randomEl(surnames);
